@@ -17,7 +17,7 @@ class RobocareSerialReader():
         
         while not self.__is_end:
             out = ''
-            # receive_data = 'okok'
+            
             while self.__serial.inWaiting() > 0:
                 read_packet = bytearray(self.__serial.read(1))
                 # out += str(hex(read_packet[0]))+' '

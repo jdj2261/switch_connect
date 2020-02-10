@@ -10,9 +10,8 @@ def main():
     print 'switch_connect v 1.0.0'
 
     try:
-        rospy.init_node('BridgeDementia')
+        rospy.init_node('SwitchConnect')
         conv = DataConversion()
-        # conv.execute()
         rospy.spin()
 
     except rospy.ROSInterruptException:
