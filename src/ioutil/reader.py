@@ -2,6 +2,7 @@
 
 import time
 import serial
+from manages.ros_manage import RosManager
 
 class RobocareSerialReader():
     def __init__(self, serial):
@@ -9,10 +10,11 @@ class RobocareSerialReader():
         print 'RobocareSerialReader : init'
         self.__is_end = False
         self.__result=''
+        self.__rm = RosManager()
 
-    def run(self):
+    def run(self, tmp):
         print 'RobocareSerialReader read start'
-        global receive_data
+        
         while not self.__is_end:
             out = ''
             # receive_data = 'okok'
@@ -23,13 +25,10 @@ class RobocareSerialReader():
                 # print(out)
                 
             if out != '':
-                self.__result = out
-                receive_data = out.strip()
-                print(out)
-                
-
-            if out == '01 01 02 10 eb ':
-                pass
+                self.__result = out.strip()
+                # print(receive_data)
+                if self.__result == '01 01 02 10 eb':
+                    self.__rm.pub()
 
             time.sleep(0.1)
 

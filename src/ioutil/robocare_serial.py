@@ -46,5 +46,5 @@ class RobocareSerial():
 
     def read(self):
         self.__reader = RobocareSerialReader(serial=self.__serial)
-        self.__reader.run()
+        thread.start_new_thread(self.__reader.run, ("", ))
 

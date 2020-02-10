@@ -12,7 +12,9 @@ def main():
     try:
         rospy.init_node('BridgeDementia')
         conv = DataConversion()
+        # conv.execute()
         rospy.spin()
+
     except rospy.ROSInterruptException:
         pass
 
