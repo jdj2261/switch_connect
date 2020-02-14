@@ -22,12 +22,11 @@ class RobocareSerial():
                 port='/dev/leonardo',
                 baudrate=9600
             )
-            
+
         except:
             print(u' 포트를 여는 데 실패했습니다.')
            
             return False
-
         return True
 
     def write(self, input, duration=0.1, count=1):
@@ -47,4 +46,15 @@ class RobocareSerial():
     def read(self):
         self.__reader = RobocareSerialReader(serial=self.__serial)
         thread.start_new_thread(self.__reader.run, ("", ))
+
+    def close(self):
+        self.stop()
+        time.sleep(0.2)
+        self.__serial.close()
+
+    def stop(self):
+        if self.__reader != None:
+            self.__reader.stop()
+        if self.__writer != None:
+            self.__writer.stop()
 

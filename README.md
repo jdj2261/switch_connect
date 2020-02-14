@@ -1,10 +1,6 @@
 # switch_connect NODE
 
-
-
 ## Package
-
----
 
 ### 	1) ioutil
 
@@ -18,15 +14,17 @@
 
 
 
+## Topic
+
+- /is_wakeup (std_msgs/Bool)
+
+  스위치 누르면 True로 Publish  
+
 ## PORT 설정
 
----
-
 ~~~ 
-$ cd /etc/udev/rules.d
-$ sudo vi leonardo.rules
-(아래 복사)
-SUBSYSTEMS=="usb", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="8036", MODE="0666", SYMLINK+="leonardo"
+- switch_connect/res directory로 이동
+- ./rule.sh  (rule.sh 실행)
 
 (usb 재 연결 후 확인)
 $ ls -l /dev/leonardo 
